@@ -3,6 +3,7 @@ import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
+import CopyPlugin from 'copy-webpack-plugin'
 
 const config: webpack.Configuration = {
   mode: 'production',
@@ -26,14 +27,15 @@ const config: webpack.Configuration = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyPlugin([{ from: 'static', to: '.' }]),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './src/index.html',
       hash: true
     })
   ],
   devServer: {
     open: true,
-    contentBase: path.join(__dirname, './public')
+    contentBase: path.join(__dirname, './static')
   }
 }
 
