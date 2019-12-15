@@ -8,7 +8,7 @@ const config: webpack.Configuration = {
   mode: 'production',
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve('./dist'),
     filename: '[name].[hash].js'
   },
   module: {
